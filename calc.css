@@ -4,7 +4,7 @@
     height: 680px;
     width: 400px;
     border: 1px solid rgb(0, 0, 0);
-    border-radius: 20px;
+    border-radius: 25px;
     grid-template-rows: repeat(7, 85px);
     grid-template-columns: repeat(4, 85px);
     gap: 10px;
@@ -19,7 +19,7 @@
 }
 
 .cellFunc:hover{
-    background-color: rgb(233, 233, 233); 
+    background-color: rgb(245, 245, 245); 
     transition-duration: 400ms;
 }
 
@@ -36,11 +36,13 @@
     background-color: rgb(255, 219, 151); 
 }
 
-.cellOps:focus{
+.extendedHighlight:focus{
     background-color: white;
     color: orange;
     transition-duration: 800ms;
 }
+
+
 
 .cellNum{
     color: white;
@@ -60,7 +62,9 @@
     text-align: right;
     grid-area: 1 / 1 / 1 / 5;
     border-radius: 0px;
+    
 }
+
 
 #answerDisplay{
     background-color: rgb(0, 0, 0);
@@ -74,11 +78,31 @@
 #answer{
     height: 100%;
     width: 100%;
-    font-size: 35px;
+    font-size: 50px;
     background-color: rgb(0, 0, 0);
     text-align: right;
+    padding-right: 27px;
+    box-sizing: border-box;
     color: white;
     border: none;
+    overflow: none;
+}
+
+#answer2{
+    height: 100%;
+    width: 100%;
+    font-size: 50px;
+    background-color: rgb(0, 0, 0);
+    text-align: right;
+    padding-right: 27px;
+    box-sizing: border-box;
+    border: none;
+    overflow: none;
+    display: hidden;
+}
+
+#clearBtn{
+    color: rgb(0, 0, 0);
 }
 
 input:focus{
@@ -91,3 +115,4 @@ input:focus{
     padding-left: 33px;
     grid-area: 7 / 1 / 7 / 3;
 }
+

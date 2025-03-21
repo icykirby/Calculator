@@ -9,30 +9,32 @@
 </head>
 <body>
     <div class="container">
-        <div id="blankDisplay"></div>
+        <div id="blankDisplay">
+            <input id="answer2" name="answer2" readonly>
+        </div>
         <div id="answerDisplay">
-            <input id="answer" readonly>
+            <input id="answer" name="answer" readonly>
         </div>
        
-        <button type="button" class="cellFunc" onclick="clear(0)">AC</button>
-        <button type="button" class="cellFunc">+/-</button>
-        <button type="button" class="cellFunc">%</button>
-        <button type="button" class="cellOps" onclick="div()">÷</button>
-        <button type="button" class="cellNum" onclick="display(7)">7</button>
-        <button type="button" class="cellNum" onclick="display(8)">8</button>
-        <button type="button" class="cellNum" onclick="display(9)">9</button>
-        <button type="button" class="cellOps" onclick="mult()">x</button>
-        <button type="button" class="cellNum" onclick="display(4)">4</button>
-        <button type="button" class="cellNum" onclick="display(5)">5</button>
-        <button type="button" class="cellNum" onclick="display(6)">6</button>
-        <button type="button" class="cellOps" onclick="subt()">-</button>
-        <button type="button" class="cellNum" onclick="display(1)">1</button>
-        <button type="button" class="cellNum" onclick="display(2)">2</button>
-        <button type="button" class="cellNum" onclick="display(3)">3</button>
-        <button type="button" class="cellOps" onclick="sum()">+</button>
-        <button type="button" class="cellNum" id="zero"  onclick="display(0)">0</button>
-        <button type="button" class="cellNum" onclick="display('.')">.</button>
-        <button type="button" class="cellOps">=</button>
+        <button type="button" class="cellFunc" id="clearBtn" onclick="clearDisplay()">AC</button>
+        <button type="button" class="cellFunc" onclick="sign()">+/-</button>
+        <button type="button" class="cellFunc" onclick="percent()">%</button>
+        <button type="button" class="cellOps extendedHighlight" onclick="div()">÷</button>
+        <button type="button" class="cellNum" onclick="getNum(7)">7</button>
+        <button type="button" class="cellNum" onclick="getNum(8)">8</button>
+        <button type="button" class="cellNum" onclick="getNum(9)">9</button>
+        <button type="button" class="cellOps extendedHighlight" onclick="mult()">x</button>
+        <button type="button" class="cellNum" onclick="getNum(4)">4</button>
+        <button type="button" class="cellNum" onclick="getNum(5)">5</button>
+        <button type="button" class="cellNum" onclick="getNum(6)">6</button>
+        <button type="button" class="cellOps extendedHighlight" onclick="subt()">-</button>
+        <button type="button" class="cellNum" onclick="getNum(1)">1</button>
+        <button type="button" class="cellNum" onclick="getNum(2)">2</button>
+        <button type="button" class="cellNum" onclick="getNum(3)">3</button>
+        <button type="button" class="cellOps extendedHighlight" onclick="sum()">+</button>
+        <button type="button" class="cellNum" id="zero"  onclick="getNum(0)">0</button>
+        <button type="button" class="cellNum" onclick="decimal('.')">.</button>
+        <button type="button" class="cellOps" id="equal" onclick="calc()">=</button>
     </div>
 </body>
 </html>
