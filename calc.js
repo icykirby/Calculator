@@ -54,11 +54,14 @@ function decimal(dec){
     console.log(turn);
     if(decCount == 0 && turn == true){
         answerDisplay.value += dec;
-        decCount++;
+        
         console.log("hi");
+        decCount++;
     }
     if(decCount == 0 && turn == false){
-        answerDisplay2.value += dec;
+        answerDisplay.value += dec;
+        
+        console.log("hi2");
         decCount++;
     }
 }
@@ -90,9 +93,12 @@ function getNum(input){
         answerDisplay.value += input;
         console.log("logged");
     }    
+
+    
+
     if(turn == false && inputCount <= 9){
         
-        answerDisplay.value = null;
+        
         answerDisplay.value += input;
         console.log("logged");
     }
@@ -139,6 +145,7 @@ function calc(){
 }
 
 function sum(){
+    decCount = 0;
     console.log(count);
     if(count > 0){
         
@@ -149,10 +156,12 @@ function sum(){
     turn = false;
     operator += '+';
     count++;
+    inputCount = 0;
 }
 
 function subt(){
     console.log(count);
+    decCount = 0;
     if(count > 0){
         
         console.log("calc >  0");
@@ -166,6 +175,7 @@ function subt(){
 
 function mult(){
     console.log(count);
+    decCount = 0;
     if(count > 0){
         
         console.log("calc >  0");
@@ -180,6 +190,7 @@ function mult(){
 
 function div(){
     console.log(count);
+    decCount = 0;
     if(count > 0){
         
         console.log("calc >  0");
