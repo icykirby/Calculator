@@ -94,7 +94,7 @@ function getNum(input){
         console.log("logged");
     }    
 
-    
+
 
     if(turn == false && inputCount <= 9){
         
@@ -122,7 +122,7 @@ function calc(){
 
     switch(operator){
         case '+':
-            finalAnswer = mathAnswer + mathAnswer2;
+            finalAnswer = mathAnswer + mathAnswer2; 
         break;
         case '-':
             finalAnswer = mathAnswer - mathAnswer2;
