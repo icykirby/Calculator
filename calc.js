@@ -16,10 +16,20 @@ let finAnsLenStr = null;
 let finAnsLen = 0;
 let fontSizeNum = 100;
 
+let displayLen = null;
+let displayLenFin = null;
+
 
 function changeFontsize(){
     if(inputCount > 4){
         fontSizeNum -= 10;
+        answerDisplay.style.fontSize = fontSizeNum + "px";
+    }
+}
+
+function changeFontsizeFin(){
+    if(displayLenFin > 4){
+        fontSizeNum -= 10 * (displayLenFin - 4);
         answerDisplay.style.fontSize = fontSizeNum + "px";
     }
 }
@@ -49,7 +59,15 @@ function sign(){
             else{
                 answerDisplay.value = '-' + hasE;
             }
-        }      
+        }
+        else{
+            if(hasE.startsWith('-')){
+                answerDisplay.value = hasE.slice(1);
+            }
+            else{
+                answerDisplay.value = '-' + hasE;
+            }
+        }    
     }
     else{
         mathAnswer2 = parseFloat(answerDisplay2.value, 10);
@@ -63,8 +81,17 @@ function sign(){
                 answerDisplay.value = '-' + hasE;
             }
         }
+        else{
+            if(hasE.startsWith('-')){
+                answerDisplay.value = hasE.slice(1);
+            }
+            else{
+                answerDisplay.value = '-' + hasE;
+            }
+        }
         answerDisplay.value = mathAnswer2;
     }
+    
 }
 
 function percent(){
@@ -98,6 +125,11 @@ function decimal(dec){
     }
 }
 
+function error(){
+    answerDisplay.value = null;
+    answerDisplay.value += "Error";
+}
+
 function display(finAns){
     console.log("calcCount: " + calcCount);
     console.log(mathAnswer);
@@ -107,22 +139,50 @@ function display(finAns){
     if(finAns >= 1000000000){
         //1.52416 e16 = 15241 578750190520
         //1,000,000,000 = 1e9
+
+        console.log("display >= 1000000000");
         numString = finAns.toString();
         finAnsLenStr = numString.length;
         finAnsLen = parseInt(finAnsLenStr, 10);
         finAnsLen -= 1;
+        let w = finAns / 10 ** finAnsLen;
+        let y = +w.toFixed(6);
+        
+    
+        answerDisplay.value = null;
+        answerDisplay.value += y + "e" + finAnsLen;
+        displayLen = answerDisplay.value;
+        displayLenFin = displayLen.length;
+        changeFontsizeFin();
+        let x = finAns.toExponential();
+        console.log("w: " + w);
+        console.log("x: " + x);
+        console.log("y: " + y);
+
+
+    }
+    else if(finAns <= -1000000000){
+        console.log("display <= 1000000000");
+        numString = finAns.toString();
+        finAnsLenStr = numString.length;
+        finAnsLen = parseInt(finAnsLenStr, 10);
+        finAnsLen -= 2;
+        console.log("finAnsLen: " + finAnsLen);
         let w = finAns / 10 ** finAnsLen;
         let y = +w.toFixed(5);
         
     
         answerDisplay.value = null;
         answerDisplay.value += y + "e" + finAnsLen;
-        
-        
+        displayLen = answerDisplay.value;
+        displayLenFin = displayLen.length;
+        changeFontsizeFin();
         let x = finAns.toExponential();
         console.log("w: " + w);
         console.log("x: " + x);
         console.log("y: " + y);
+
+        
 
 
     }
@@ -136,6 +196,10 @@ function display(finAns){
         v = +finAns.toPrecision(2);
         answerDisplay.value = null;
         answerDisplay.value += v;
+        displayLen = answerDisplay.value;
+        displayLenFin = displayLen.length;
+        changeFontsizeFin();
+        
     }
     
     turn = false;
@@ -162,10 +226,14 @@ function getNum(input){
     }    
 
     if(turn == false && inputCount < 9){
+
         if(nullCount == 0){
             answerDisplay.value = null;
+            fontSizeNum = 100;
+            answerDisplay.style.fontSize = fontSizeNum + "px";
             nullCount++;
         }
+        
         changeFontsize();
         answerDisplay.value += input;
         console.log("logged 2");
@@ -175,9 +243,6 @@ function getNum(input){
     console.log(turn);
     
 }
-
-
-
 
 function calc(){
     
@@ -189,32 +254,42 @@ function calc(){
     switch(operator){
         case '+':
             finalAnswer = mathAnswer + mathAnswer2; 
+            display(finalAnswer);
         break;
         case '-':
             finalAnswer = mathAnswer - mathAnswer2;
+            display(finalAnswer);
         break;
         case '*':
             finalAnswer = mathAnswer * mathAnswer2;
+            display(finalAnswer);
         break;
         case '/':
-            finalAnswer = mathAnswer / mathAnswer2;
+            if(mathAnswer2 == 0){
+                error();
+            }
+            else{
+                finalAnswer = mathAnswer / mathAnswer2;
+                display(finalAnswer);
+            }
+            
         break;
     }
 
     console.log(finalAnswer);
     answerDisplay2.value = null;
     operator = '';
-    display(finalAnswer);
     calcCount++;
     decCount = 0;
     nullCount = 0;
     inputCount = 0;
+    count = 0;
     
 }
 
 function sum(){
     decCount = 0;
-    console.log(count);
+    console.log("sum" + count);
     if(count > 0){
         
         console.log("calc >  0");
