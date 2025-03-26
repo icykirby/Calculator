@@ -94,16 +94,22 @@ function sign(){
     
 }
 
-function percent(){
+function percent(){ //fix font sizes
     if(turn == true){
         mathAnswer = parseFloat(answerDisplay.value, 10);
         mathAnswer /= 100; 
-        answerDisplay.value = mathAnswer;       
+        answerDisplay.value = mathAnswer;
+        displayLen = answerDisplay.value;
+        displayLenFin = displayLen.length;
+        changeFontsizeFin();       
     }
     else{
         mathAnswer2 = parseFloat(answerDisplay.value, 10);
         mathAnswer2 /= 100;
         answerDisplay.value = mathAnswer2;
+        displayLen = answerDisplay.value;
+        displayLenFin = displayLen.length;
+        changeFontsizeFin();
     }
 }
 
