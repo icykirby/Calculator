@@ -1,3 +1,5 @@
+
+
 .container{
     background-color: black;
     display: inline-grid;
@@ -72,6 +74,7 @@
     grid-area: 2 / 1 / 2 / 5;
     border-radius: 0px;
     color: white;
+    
 
 }
 
@@ -86,6 +89,9 @@
     color: white;
     border: none;
     overflow: none;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 100px;
 }
 
 #answer2{
